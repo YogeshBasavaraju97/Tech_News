@@ -1,9 +1,10 @@
-import { postsData } from '@/data';
 import defaultThumbnail from '../../public/defaultThumbnail.png';
 import Image from 'next/Image';
 import Link from 'next/link';
 import DeleteButton from './DeleteButton';
-
+import { getServerSession } from 'next-auth';
+import { authOptions } from '../api/auth/[...nextauth]/route';
+import { NextResponse } from 'next/server';
 export { postsData } from '../../data';
 
 interface PostProps {
@@ -11,14 +12,14 @@ interface PostProps {
   author: string;
   thumbnail?: string;
   authorEmail?: string;
-  date?: string;
+  date: string;
   title: string;
   content: string;
   links?: string[];
-  category: string;
+  category?: string;
 }
 
-export default function Post({
+export default async function Post({
   id,
   author,
   date,
@@ -29,11 +30,31 @@ export default function Post({
   links,
   category,
 }: PostProps) {
+  const session = await getServerSession(authOptions);
+
+  const dateObject = new Date(date);
+
+  const options: Intl.DateTimeFormatOptions = {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+  };
+
+  const formattedDate = dateObject.toLocaleDateString('en-US', options);
+
   return (
     <div className="m-2">
       <div>
-        Posted by : <span className="font-bold">{author}</span> on :
-        <span>{date}</span>
+        <>
+          {author ? (
+            <>
+              Posted by : <span className="font-bold">{author}</span> on{' '}
+              <span>{formattedDate}</span>
+            </>
+          ) : (
+            <>on {formattedDate}</>
+          )}
+        </>
       </div>
 
       <div className="w-full h-72 relative">
@@ -48,14 +69,28 @@ export default function Post({
           <Image src={defaultThumbnail} alt={title} fill />
         )}
       </div>
-      <p>
-        Category: <span>{category}</span>
-      </p>
-      <h2>{title}</h2>
-      <Link href={`/edit-post/${id}`}>Edit</Link>
-      <Link href={`/delete/${id}`}>
-        <DeleteButton />
-      </Link>
+
+      <div className=" h-8 bg-slate-400 w-32 rounded-md  flex justify-center items-center">
+        {category}
+      </div>
+      <div>
+        <h2 className="font-bold text-2xl p-2">{title}</h2>
+        <h2>{content}</h2>
+      </div>
+
+      {links &&
+        links.map((link) => (
+          <Link className="text-cyan-500 p-1 mb-6" href={'link'}>
+            {link}
+          </Link>
+        ))}
+      <div className="flex justify-start w-24 h-10 bg-slate-200 rounded-md mt-3 items-center gap-2">
+        <button className="p-1">
+          <Link href={`/Edit-post/${id}`}>Edit</Link>
+        </button>
+
+        <DeleteButton id={id} />
+      </div>
     </div>
   );
 }
