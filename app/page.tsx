@@ -4,7 +4,7 @@ import Post from './Component/Post';
 
 import { TPosts } from './Type';
 
-const getposts = async (): Promise<TPosts | null> => {
+const getposts = async (): Promise<TPosts[] | null> => {
   try {
     const res = await fetch(`${process.env.NEXTAUTH_URL}/api/posts`, {
       cache: 'no-store',
