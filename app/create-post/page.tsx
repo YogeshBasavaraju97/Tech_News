@@ -1,8 +1,9 @@
 import React from 'react';
 import CreatePostForm from '../Component/CreatePostForm';
 import { getServerSession } from 'next-auth';
-import { authOptions } from '../api/auth/[...nextauth]/route';
+
 import { redirect } from 'next/navigation';
+import { authOptions } from '@/lib/auth';
 
 type Props = {};
 

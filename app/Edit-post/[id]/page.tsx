@@ -1,6 +1,6 @@
-import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 import EditPost from '@/app/Component/EditPost';
 import { TPosts } from '@/app/Type';
+import { authOptions } from '@/lib/auth';
 import { getServerSession } from 'next-auth/next';
 import { redirect } from 'next/navigation';
 

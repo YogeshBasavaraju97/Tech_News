@@ -1,9 +1,10 @@
 import Link from 'next/link';
 import { getServerSession } from 'next-auth';
-import { authOptions } from '../api/auth/[...nextauth]/route';
+
 import { redirect } from 'next/navigation';
 import { TPosts } from '../Type';
 import Post from '../Component/Post';
+import { authOptions } from '@/lib/auth';
 
 const getPost = async (email: string) => {
   try {
