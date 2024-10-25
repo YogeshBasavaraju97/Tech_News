@@ -1,5 +1,5 @@
 import defaultThumbnail from '../../public/defaultThumbnail.png';
-import Image from 'next/Image';
+import Image from 'next/image';
 import Link from 'next/link';
 import DeleteButton from './DeleteButton';
 import { getServerSession } from 'next-auth';
