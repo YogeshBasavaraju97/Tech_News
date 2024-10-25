@@ -20,7 +20,7 @@ export async function POST(req: Request) {
       { status: 500 }
     );
   }
-
+  //new
   try {
     const newPost = await prisma.post.create({
       data: {
