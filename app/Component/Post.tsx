@@ -80,7 +80,7 @@ export default async function Post({
 
       {links &&
         links.map((link) => (
-          <Link className="text-cyan-500 p-1 mb-6" href={'link'}>
+          <Link key={link} className="text-cyan-500 p-1 mb-6" href={'link'}>
             {link}
           </Link>
         ))}

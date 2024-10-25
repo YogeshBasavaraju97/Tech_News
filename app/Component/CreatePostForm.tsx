@@ -10,7 +10,7 @@ import {
   CloudinaryUploadWidgetResults,
 } from 'next-cloudinary';
 
-export default function reatePostForm() {
+export default function CreatePostForm() {
   const [links, setLinks] = useState<String[]>([]);
   const [linkInput, setLinkInput] = useState('');
   const [title, setTitle] = useState('');

@@ -36,7 +36,7 @@ export default function Navbar() {
             Tech News
           </h1>
         </Link>
-        <p>Exploring tomorrow's Innovation</p>
+        <p>Exploring tomorrow&apos;s Innovation</p>
         <p>One byte at a time</p>
       </div>
       {status === 'authenticated' ? (
