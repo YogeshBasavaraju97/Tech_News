@@ -70,7 +70,7 @@ export default async function Post({
         )}
       </div>
 
-      <div className=" h-8 bg-slate-400 w-32 rounded-md  flex justify-center items-center">
+      <div className=" h-8 bg-slate-400 w-32 rounded-md  flex justify-center items-center mt-2">
         {category}
       </div>
       <div>

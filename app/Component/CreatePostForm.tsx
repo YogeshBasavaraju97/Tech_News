@@ -219,7 +219,7 @@ export default function reatePostForm() {
         {publicId && (
           <button
             onClick={removeImage}
-            className="py-2 px-4 rounded-md font-bold w-fit bg-red-600 text-white mb-4"
+            className="py-2 px-4 rounded-md font-bold w-fit bg-red-600 text-white m-1"
           >
             Remove Image
           </button>
